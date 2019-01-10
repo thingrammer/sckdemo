@@ -1,0 +1,19 @@
+#logging:
+#  level:
+#    ROOT: DEBUG
+#    org.springframework:
+#      security: DEBUG
+
+jwt:
+  expiration_time: 100000000
+  secret: "1233124"
+  header_string: "Authorization"
+  token_prefix: "JWT-"
+  signup_url: "/sign/up"
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8&useSSL=false
+    username: fat
+    password: ps
+    #    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
