@@ -28,22 +28,10 @@ class UserDetailsServiceImpl : UserDetailsServiceAdapter() {
     @Autowired
     lateinit var authMapper: AuthMapper
 
-    companion object {
-        val userData = mutableMapOf(
-                "fat" to BCryptPasswordEncoder().encode("pss")
-        )
-    }
 
-    override fun loadUserByUsername(username: String): UserDetails {
-        val password =
-//                userData[username]
-                authMapper.getPasswordByUsername(username)
-                        ?: throw UsernameNotFoundException(username)
-        return User(
-                username,
-                password,
-                emptyList()
-        )
+    override fun getPassword(username: String): String? {
+
+        return authMapper.getPasswordByUsername(username)
     }
 
     override fun saveUser(username: String, password: String) {
