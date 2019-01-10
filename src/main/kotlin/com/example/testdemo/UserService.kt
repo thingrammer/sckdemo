@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper
 import org.apache.ibatis.annotations.Param
 import org.apache.ibatis.annotations.Select
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
@@ -22,12 +23,10 @@ interface AuthMapper {
     fun saveUser(@Param("username") username: String, @Param("password") password: String)
 }
 
-@Service
-@Primary
+@Service("userDetailsService")
 class UserDetailsServiceImpl : UserDetailsServiceAdapter() {
     @Autowired
     lateinit var authMapper: AuthMapper
-
 
     override fun getPassword(username: String): String? {
 
