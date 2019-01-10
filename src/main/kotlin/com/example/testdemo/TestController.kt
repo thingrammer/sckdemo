@@ -3,10 +3,7 @@ package com.example.testdemo
 import com.demo.jwt.config.security.JwtAuth
 import com.demo.jwt.config.security.JwtProperties
 import com.demo.jwt.config.security.UriHandler
-import com.demo.jwt.service.impl.UserDetailsServiceAdapter
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Value
-import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -29,7 +26,7 @@ class MainController {
     }
 
     @Autowired
-    lateinit var userDetailsService: UserDetailsServiceAdapter
+    lateinit var userDetailsService: UserDetailsServiceImpl
 
     @PostMapping("/sign/up")
     fun signUp(@RequestBody user: Map<String, String>): Any {
